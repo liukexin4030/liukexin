@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script>
+    /* vue 模板字符串
+        `   `   ${} 
+        箭头函数
+       =>
+        map()函数
+    */
+   var arr = [1,23,4];
+   let newArr = arr.map(function(item){
+       return item*2;
+   });
+   let newArr1 = arr.map(item => item*3);
+   function fn(){
+       console.log(this);
+   }
+    let o = {
+        f:fn,
+    }
+   o.f();
+
+   /*  
+        函数最麻烦的就是箭头的指向问题  箭头函数的 this 指向问题  
+        函数中的 this 指向问题 开始是不确定的
+        只有 函数调用时 才能明确判断 this 的 指向问题
+
+        ------------------------------------------------------
+        定时器中的this 都指向 window
+        箭头函数的特性:
+
+        1、箭头函数 中的this 会绑定上下文的 this 指向
+            函数体内的this值，绑定定义时所在作用域的this;
+        2、不可当作构造函数使用；
+        3、不能使用arguments；
+
+        rest 参数
+            rest 参数 (...变量名)、用于获取函数多余的参数，放在数组中可以取代arguments(类数组)
+            rest 得到的就是数组
+            arr.constructor 的使用方式
+            rest只能放在 参数的最后(把全部或者剩余的部分放在数组中)
+            rest 也可以用到数组和对象中。
+        ----------------------------------------------------------
+        函数参数的默认值
+        function add(a,b=10){};
+        ----------------------------------------------------------
+        对象简洁使用法
+        Object.assign();
+        函数上边的静态方法
+        ----------------------------------------------------------
+        扩展运算符
+        ...可以展开数组  也可以展开 对象
+        Math.max();
+        ----------------------------------------------------------
+        一些数组的方法
+        ES5  map、filter、reduce、some、every
+        ES6  find、findIndex、
+
+
+
+        
+
+
+
+
+   */
+  document.onclick = function(){
+     
+      setTimeout(function(){
+          console.log(this);
+      },1000);
+      setTimeout(()=>{
+          console.log(this);
+      },2000)
+  }
+
+</script>
+<body>
+    
+</body>
+</html>
