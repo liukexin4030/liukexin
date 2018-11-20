@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:miav="mes">lsdfnsk</p>
+        <p>{{ mes }}</p>
+    </div>
+    <button @click="toshow()">按钮</button>
+    <button v-on:click="say('hi')">Say hi</button>
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+    let message = '我是vue的第一个应用111'
+   
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            mes:message,
+        },
+        methods:{
+            toshow(){
+                alert('---');
+                console.log(123);
+            },
+            say: function (message) {
+                alert(message)
+             }
+        }
+    });
+     /*  启动vue，传入一个选项对象
+        文本插值，{{}} 小胡子语法；
+
+        ------------------------------------------------------------
+        声明式渲染
+
+        命令式渲染
+        ------------------------------------------------------------
+        响应式的数据绑定
+        ------------------------------------------------------------
+        vue中的一些指令
+        directive
+            v-bind:属性   动态绑定数据;简写成 ：
+            v-text
+            v-html
+            v-clock  隐藏未编译的小胡子标签 比 v-clock 更方便
+            v-once 只执行一次，用于优化性能的
+            ...了解更多看文档
+        ------------------------------------------------------------
+        v-for 、
+        v-if（实际上是移出、移入元素）、
+        v-show（频繁切换的时候，要使用v-show,实际上是切换display的none）
+
+        v-for 既可以循环 数组 也可以循环对象
+          数组 item、index in arr
+          对象 key、value、index in obj
+          注意 要求  循环的时候必须加key值
+         ------------------------------------------------------------
+         vue中的事件系统
+         v-on 简写为 @
+            事件的处理函数写在 methods中
+            注：事件对象是作为事件处理函数的第一个参数
+            如果是写成了函数执行，在模板中使用$event,传递给方法，拿到事件对象
+            在method中定义的函数，this都指向当前的实例 vm
+        
+         ------------------------------------------------------------
+
+
+     */
+</script>
+</html>

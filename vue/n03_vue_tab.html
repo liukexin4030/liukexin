@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #app div{
+        width:200px;
+        height:200px;
+        background-color:#f7f7f7;
+        display:none
+    }
+    .yellow {
+        background:goldenrod;
+    }
+    .fontSize {
+        font-size: 16px;
+    }
+</style>
+<body>
+    <div id="app">
+      <!--   <button @click="liu(1)">按钮</button> -->
+        <button v-for="item,i in data"
+             :class="{yellow:i===showIndex}" class="fontSize"
+             @click="tab(i)">
+            {{ item.title }}-{{i}}
+        </button>
+        <div :style="{display:(i === showIndex?'block':'none')}"  
+            v-for="item,i in data">
+            <p v-for=" news in item.content ">{{ news.news }}</p>
+        </div>
+    </div>    
+</body>
+<script src="js/vue.js"></script>
+<script>
+    /* 
+        控制 class 的加与不加
+        v-bind:class = "{className:表达式（true/false）}"
+     */
+    let data = [
+        {
+            title:'体育',
+            content:[
+                {
+                    news:'体育板块1'
+                },
+                {
+                    news:'体育板块1'
+                },
+                {
+                    news:'体育板块1'
+                },
+            ]
+
+        },
+        {
+            title:'娱乐',
+            content:[
+                {
+                    news:'娱乐板块1'
+                },
+                {
+                    news:'娱乐板块1'
+                },
+                {
+                    news:'娱乐板块1'
+                },
+            ]
+
+        },
+        {
+            title:'军事',
+            content:[
+                {
+                    news:'军事板块1'
+                },
+                {
+                    news:'军事板块1'
+                },
+                {
+                    news:'军事板块1'
+                },
+            ]
+
+        }
+    ];
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            data,
+            showIndex:0,
+        },
+        methods:{
+           tab(n){
+              this.showIndex = n;
+           }     
+        }
+    });
+</script>
+</html>
