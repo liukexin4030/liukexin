@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>双向数据邦定</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" @keyup.enter = "addItem">
+        <ul>
+            <li v-for="item in mes">{{ item }}</li>
+           
+        </ul>
+        <input type="text" v-model = "message">
+        {{ message }}
+
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            mes:[1,2,4],
+            message:'liukexin'
+
+        },
+        methods:{
+            addItem(ev){
+                console.log(ev);
+                this.mes.push(ev.target.value);
+                ev.target.value = '';
+            }
+        }
+    });
+    /*  
+        事件修饰符
+        v-on:click.修饰符 = '表达式';
+            .stop(ev.stopPropagation) 阻止事件冒泡
+            .prevent(ev.preventDefault()) 阻止默认行为
+            .once(只会执行一次)
+            .self(点击自己才能触发，内部判断事件源)
+            ....
+
+        按键修饰符
+            .enter
+            .space
+            ...
+        ---------------------------------------------------------
+        双向数据绑定
+            既数据的改变会影响 DOM的变化
+            DOM的变化也会引起数据的变化
+
+            可交互的表单元素
+                input（text、checkbox、redio）
+                textarea
+                select
+            
+            v-model (可使用在  可交互的表单元素上)
+                数据 =》页面
+                页面交互 =》 数据也发生改变
+
+                MVVM 模式
+                    M  model  数据
+                    V  view   视图
+                    vm 实例
+                    数据通过vm层来绑定到视图上，视图上有交互，改变了数据，
+                    改变之后会重新渲染视图
+            
+    
+     */
+</script>
+
+</html>
