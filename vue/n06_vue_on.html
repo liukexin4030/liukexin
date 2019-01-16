@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <div class="content" id="app" >
+      <button v-on:click="tabShow">按钮</button>
+      <div class="box" v-show="display">
+          sdfdsf
+      </div>
+      <button v-on:click="tabShowfn">按钮2</button>
+  </div>
+</body>
+
+<script src="js/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            display:false,
+        },
+        methods:{
+            tabShow(){
+                this.display = !this.display;
+            },
+            tabShowfn(n){
+                console.log('1232424');
+                console.log(n);
+            }
+        }
+    });
+    /* 
+        v-on:事件名=“处理函数|表达式|处理函数执行”;
+        事件对象：event，作为事件处理函数的第一个参数;
+            如果写成了函数执行，在模板中使用 $event 传给方法，拿到事件对象即可;
+        this指向
+            在 methods 中的函数，this指向 都指向当前 vue 实例（new vue 这个实例）;
+        控制 class
+            v-bind:class = 'class名字：表达式'
+            根据表达式的布尔值，来决定是否添加这个class；
+        控制 style
+            v-bind:style = '{width:表达式...}';
+    
+    */
+  
+</script>
+</html>
